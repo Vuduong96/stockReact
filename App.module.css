@@ -1,0 +1,14 @@
+.infoCardContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.dashboardContent{
+    background-color: var(--dashboard-bg);
+    padding: 40px 20px;
+}
+
+.dashboardContentContainer {
+    max-width: var(--site-width);
+    margin: 0 auto;
+}

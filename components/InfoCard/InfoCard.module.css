@@ -1,0 +1,19 @@
+.infoCard{
+    width:fit-content;
+    background-color: white;
+    flex-direction: row;
+    border-radius: 10px;
+    padding: 20px;
+    color: var(--infoCard-text-clor );
+    justify-content: center;
+    margin: 0 20px;
+    padding-right: 6rem;
+}
+
+.paragraph{
+    font-size: 0.8rem;
+}
+
+.header{
+    font-size: 1rem;
+}
