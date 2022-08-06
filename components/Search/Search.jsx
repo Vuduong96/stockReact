@@ -26,6 +26,8 @@ function Search() {
 
 const FormStyle = styled.form`
     margin:1rem 20rem;
+    margin-left:40px;
+    margin-bottom:5px;
     
     div{
         width:100%;
@@ -39,8 +41,8 @@ const FormStyle = styled.form`
         color:white;
         padding:0.5rem 3rem;
         border:2px solid white;;
-        border-radius: 2rem;
-        width: 100%;
+        border-radius: 0.5rem;
+        width: 50%;
         align-items: left;
         justify-content: left;
     }

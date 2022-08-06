@@ -1,0 +1,65 @@
+.stockcontainer{
+    background-color: #0E1E2B;
+    padding: 0 90px;
+    border-radius: var(--box-border-radius);
+    margin-left: 3rem;
+    margin-bottom: 1rem;
+}
+
+.header{
+    padding: 5px 0;
+    border-bottom: 2px solid #f1f1f1;
+    margin-bottom: 15px;
+    color: #f1f1f1;
+    font-size: var(--h1-font-size);
+}
+
+/* .listHeader,  */
+.stockPriceListItem {
+    display: flex;
+    justify-content: center;
+}
+
+.listHeader{
+    display: flex;
+    justify-content: center;
+    margin-left: 2rem;
+    border-bottom: 2px solid #ede9e9;
+    color: #ede9e9;
+}
+
+.stockPriceListItem {
+    color: #f1f1f1;
+    margin: 15px 40;
+}
+
+.stockPriceList{
+    margin: 0;
+    padding: 1;
+    list-style-type: none;
+    margin-right:1rem;
+    margin-bottom: 0.4rem;
+}
+
+.listContainer{
+    padding: 0px;
+    margin-left: 12rem;
+    width: 800px;
+    height: 500px;
+    margin-bottom: 1rem;
+}
+
+/* .datetimeHeader,
+.listDatetime{
+    width: 20rem;
+} */
+
+
+.openHeader, .listOpen,
+.closeHeader,.listClose,
+.datetimeHeader,.listDatetime{
+    width: 10rem;
+}
+
+
+

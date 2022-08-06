@@ -1,7 +1,5 @@
 import React from 'react';
-
 import styles from './Header.module.css';
-import styled from 'styled-components';
 import { AiOutlineStock } from 'react-icons/ai';
 
 const Header = () => {

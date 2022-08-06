@@ -18,6 +18,7 @@ function Searched() {
         const stockRes = await res.json();
 
         setSearchedSymbol(stockRes.data);
+        console.log(stockRes.data);
     };
     useEffect(() => {
         getSearched(params.search);
@@ -28,7 +29,7 @@ function Searched() {
         {searchedSymbol?.map((searchedstock) => {
             return(
                 <Card key={searchedstock.id}>
-                    <Link to={'/stock/' + searchedstock.id}>
+                    <Link to={'/stock/' + searchedstock.symbol}>
                     <h4>{searchedstock.name}</h4>
                     <p>{searchedstock.currency}</p>
                     <p>{searchedstock.exchange}</p>

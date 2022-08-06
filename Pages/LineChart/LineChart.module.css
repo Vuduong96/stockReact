@@ -1,0 +1,28 @@
+.mainContainer{
+    display: flex;
+}
+
+.item{
+    flex-basis: 100px;
+    height: fit-content;
+    margin: 10px;
+}
+
+.lineChartcontainer{
+    height: 50rem;
+    width: 70%;
+    margin-left: 5rem;
+    margin-top: 1rem;
+}
+
+.Card2{
+    height: 60rem;
+    width: 50rem;
+}
+
+.graph{
+    height: 100%;
+    width: 100%;
+    
+}
+

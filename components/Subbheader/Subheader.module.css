@@ -9,4 +9,5 @@
     max-width: var(--side-width);
     margin: 0 auto;
     padding: 10px;
+    margin-left:1rem;
 }

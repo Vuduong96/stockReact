@@ -1,6 +1,7 @@
 import React  from 'react';
 import {  useEffect, useState } from 'react';
-import styles from './StockPrice.module.css';
+import styles from './StockPrice/StockPrice.module.css';
+import Moment from 'moment';
 
 
 function StockPrice() {
@@ -28,6 +29,8 @@ function StockPrice() {
       fetchStockPrice();
     }, []);
 
+    Moment.locale('en');
+
   return (
   <div className={styles.listContainer}>
     <div className={styles.stockcontainer}>
@@ -46,9 +49,9 @@ function StockPrice() {
         return(
           <ul className={styles.stockPriceList} key={item.id}>
             <li className={styles.stockPriceListItem}>
-              <div className={styles.listDatetime}>{item.datetime}</div>
-              <div className={styles.listOpen}>{item.open}</div>
-              <div className={styles.listClose}>{item.close}</div>
+              <div className={styles.listDatetime}>{Moment(item.datetime).format('LLLL')}</div>
+              <div className={styles.listOpen}>{Math.round(item.open*1000)/1000}</div>
+              <div className={styles.listClose}>{Math.round(item.close*1000)/1000}</div>
             </li>
           </ul>
         )
