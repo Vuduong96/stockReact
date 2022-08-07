@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Line} from 'react-chartjs-2';
+import {Line, Bar} from 'react-chartjs-2';
 import { useParams } from "react-router-dom";
 import {CategoryScale} from 'chart.js'; 
 import Chart from 'chart.js/auto';
@@ -17,69 +17,120 @@ import Paper from '@mui/material/Paper';
 
 
 
+
+
 Chart.register(CategoryScale);
 
 
-function LineChart() {
+function DailyPrice() {
 
 
-    const[stoc1minkData, setStockData] = useState([]);
+    const[dailyData, setDailyData] = useState([]);
 
-    let params = useParams();
+    const {symbol, interval} = useParams();
 
-    const getStockData = async (symbol) => {
-        const api = await fetch(`https://api.twelvedata.com/time_series?symbol=${symbol}&interval=1min&format=JSON&apikey=ef6d325096324b31b500fe5987ab162d`
+    const getStockData = async (symbol, interval) => {
+        const api = await fetch(`https://api.twelvedata.com/time_series?symbol=${symbol}&interval=${interval}&format=JSON&apikey=ef6d325096324b31b500fe5987ab162d`
         );
       const fetcheddata = await api.json();
-      setStockData(fetcheddata.values);
-      //console.log(fetcheddata.values);
+      setDailyData(fetcheddata.values);
+      console.log(fetcheddata.values);
+
     };
 
     useEffect(() => {
-        getStockData(params.symbol);
-    }, [params.symbol]);
+        getStockData(symbol, interval);
+    }, [symbol, interval]);
 
     Moment.locale('en');
 
-
+    
     const mapped_data = {
-        labels: stoc1minkData?.map(item => Moment(item.datetime).format('HH:mm:ss')),
+        labels: dailyData?.reverse().map(item => Moment(item.datetime).format('MM-DD-YYYY')),
         datasets: [
         {
             label:"Open Price",
-            data: stoc1minkData?.map(item => item.open),
+            data: dailyData?.reverse().map(item => item.open),
             fill: true,
             backgroundColor: "rgba(75,192,192,0.2)",
             borderColor: "rgba(75,192,192,1)"
         },
         {
             label:"Closing Price",
-            data: stoc1minkData?.map(item => item.close),
+            data: dailyData?.reverse().map(item => item.close),
             fill: true,
             borderColor: "#742774"
         }
     ]
     };
 
+    const barData = {
+        labels: dailyData?.reverse().map(item => Moment(item.datetime).format('MM-DD-YYYY')),
+        datasets: [
+            {
+                type:'line',
+                label:"Open Price",
+                data: dailyData?.reverse().map(item => item.open),
+                fill: true,
+                borderColor: "white"
+            },
+            {
+                type: 'line',
+                label:"Closing Price",
+                data: dailyData?.reverse().map(item => item.close),
+                fill: true,
+                borderColor: "yellow"
+            },
+            {
+                label:"High",
+                data: dailyData?.reverse().map(item => item.high),
+                fill: true,
+                backgroundColor: "rgba(#742774,0.2)",
+                borderColor: "rgba(#742774,1)"
+            },
+            {
+                label:"Low",
+                data: dailyData?.reverse().map(item => item.low),
+                fill: true,
+                backgroundColor: "rgba(222,15,234,0.2)",
+                borderColor: "aqua"
+            }
+    ]
+    };
+
+    const volume_data = {
+        labels: dailyData?.reverse().map(item => Moment(item.datetime).format('MM-DD-YYYY')),
+        datasets: [
+        {
+            label:"Volume",
+            data: dailyData?.reverse().map(item => item.volume),
+            fill: true,
+            backgroundColor: "rgba(75,192,192,0.2)",
+            borderColor: "blue"
+        }
+    ]
+    };
+    
+
 
     return( 
     <div>
     <List>
-        <SLink to={'/daily/'+params.symbol+'/1day'}>
+        <SLink to={'/daily/'+symbol+'/'+ interval}>
             <h4>Daily</h4>
         </SLink>
-        <SLink to={'/weekly/'+params.symbol+'/1week'}>
+        <SLink to={'/weekly/'+symbol+'/1week'}>
             <h4>Weekly</h4>
         </SLink>
-        <SLink to={'/monthly/'+params.symbol+'/1month'}>
+        <SLink to={'/monthly/'+symbol+'/1month'}>
             <h4>Monthly</h4>
         </SLink>
     </List>
     <div className={styles.mainContainer}> 
-        <Card className={styles.graph} >
-            <Line data={mapped_data}  />
-        </Card>
-        <Card>
+    <Card className={styles.graph} >
+        <Line className={styles.graph1} data={mapped_data}  />
+    </Card>
+    <Card>
         <TableContainer component={Paper}>
         
         <Table sx={{ minWidth: 400 }} aria-label="simple table">
@@ -91,7 +142,7 @@ function LineChart() {
             </TableRow>
             </TableHead>
             <TableBody>
-            {stoc1minkData?.map((item) => (
+            {dailyData?.map((item) => (
                 <TableRow
                 key={item.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -108,9 +159,14 @@ function LineChart() {
         </TableContainer>
         </Card>
     </div>
-    <div>
-        
-    </div>
+   
+    <Card className={styles.graph}>
+        <Bar className={styles.graph2} data={barData} />
+    </Card>
+    
+    <Card className={styles.graph}>
+        <Line className={styles.graph3} data={volume_data}  />
+    </Card>
     </div>
     
     );
@@ -120,9 +176,10 @@ function LineChart() {
 const Card = styled.div`
   height: 20rem;
   display: flex;
-  margin-left:9rem;
+  margin-left:2rem;
   margin-top:2rem;
 `;
+
 
 const List = styled.div`
     display: flex;
@@ -163,4 +220,4 @@ const SLink = styled(NavLink)`
     }
 `;
 
-export default LineChart;
+export default DailyPrice;

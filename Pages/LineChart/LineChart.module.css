@@ -22,7 +22,69 @@
 
 .graph{
     height: 100%;
-    width: 100%;
-    
+    width: 50%;
+    align-items: center;
+    padding-left: 100px;
 }
 
+.BarChart{
+    display: flex;
+    margin-top: 5rem;
+    padding-left: 20px;
+    width:1000px;
+    height:50%;
+    align-items: center;
+    
+    /*background-color: rgb(52, 55, 57);
+    border: 2px solid white;*/
+    /*color: aqua;
+    background-color:  var(--dashboard-bg); */
+}
+
+/* .MixedChart{
+    margin-left: 5rem;
+    padding-left: 50px;
+    width: 80%;
+    border-color: aqua;
+    border-width: 2;
+    border: solid;
+    align-items: center;
+}
+*/
+.volChart{
+    display: flex;
+    width: 60%;
+    border-color: aqua;
+    border-width: 2;
+    margin-top: 10rem;
+    margin-right: 5rem;
+    padding: 10px;
+
+} 
+
+.volChartDiv{
+    display: flex;
+    width: 70%;
+    padding-left: 50px;
+    margin-top: 4rem;
+    align-items: center;
+    /*background-color: rgb(52, 55, 57);*/
+    border: 1rem;
+    border-color: rgb(225, 221, 221);
+   /* background-color:  var(--dashboard-bg); */
+}
+
+.graph1{
+    margin-top: 3rem;
+    border: 2px solid white;
+}
+
+.graph2{
+    margin-top: 3rem;
+    border: 2px solid white;
+}
+
+.graph3{
+    margin-top: 3rem;
+    border: 2px solid white;
+}

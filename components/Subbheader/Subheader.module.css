@@ -3,11 +3,14 @@
     to bottom, 
     var(--header-gradient-top), 
     var(--header-gradient-bottom));
+    width: 95rem;
+
 }
 
 .container{
     max-width: var(--side-width);
+    width: 95rem;
     margin: 0 auto;
-    padding: 10px;
+    padding: 5px;
     margin-left:1rem;
 }

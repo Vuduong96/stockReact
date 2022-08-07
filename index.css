@@ -13,9 +13,9 @@ code {
 }
 
 :root{
-  --header-gradient-top:#444b4d;
+  --header-gradient-top:#0f414f;
   --header-gradient-bottom: #070707;
-  --side-width: 1024px;
+  --side-width: 400px;
   --infoCard-text-clor: #2d88a8;
   --inforCard-dark-bg-color: #1b5265;
   --dashboard-bg:  #0a0909;

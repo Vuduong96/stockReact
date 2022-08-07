@@ -5,11 +5,20 @@
 
 .dashboardContent{
     background-color: var(--dashboard-bg);
-    padding: 100px 20px;
+    padding: 80px 40px;
+    width: 90rem;
+    background-color: black;
 }
 
 .dashboardContentContainer {
     flex-direction: row;
-    max-width: var(--site-width);
-    margin: 10 auto;
+    /*max-width: var(--site-width);
+    width: 80%;
+   /* margin: 10 auto;*/
+   width: 100%;
+    background-color: black;
+    padding-top: 20px;
+    padding-right: 20px;
+    height: 102rem;
+    border: 2px solid white;
 }
